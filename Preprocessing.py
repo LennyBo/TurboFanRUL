@@ -1,7 +1,17 @@
 import pandas as pd
 import numpy as np
 import sys
+import sklearn
 from sklearn.preprocessing import StandardScaler
+
+
+#Scale the data
+scaler = StandardScaler()
+
+# x_train = scaler.fit_transform(x_train)
+# x_val = scaler.transform(x_val)
+# x_test = scaler.transform(x_test)
+
 
 """
 unit number: Numéro du moteur (1 à 100)
@@ -52,12 +62,19 @@ def splitDataWithCycles(nCycles, data):
     for data_splitted2 the rul to guess is rul4
     for data_splitted3 the rul to guess is rul5
     '''
+    global scaler
+    
     features = data.drop(["RUL"], axis=1)
     RUL = data.drop(data.columns.difference(["RUL"]), axis=1)
     
-    features = np.asarray(features)
+    
+    try:
+        features = scaler.transform(features)
+    except sklearn.exceptions.NotFittedError:
+        features = scaler.fit_transform(features)
+    
     RUL = np.asarray(RUL)
-
+    
     counter = 0
     x = []
     y = []
@@ -65,7 +82,7 @@ def splitDataWithCycles(nCycles, data):
         stopIndex = i+nCycles+1
         # if the unit number is the same for i to max
         if stopIndex < len(features) and features[i][0] == features[stopIndex][0]:
-            x.append(features[i:stopIndex][1::].flatten()) # append the reshaped data, after dropping the unit number
+            x.append(features[i:stopIndex][1::]) # append the reshaped data, after dropping the unit number
             y.append(RUL[stopIndex][0])
             counter += 1
     
@@ -94,22 +111,33 @@ def getData():
     classes = [50,150] # 0:50: Low, 50:150: Medium, 150:: High
     
     df = loadTurboFanData()
+    
+    
     trainPrecent, testPrecent, valPrecent = 0.7, 0.2, 0.1
     trainEngines, testEngines, valEngines = separateData(df, trainPrecent, testPrecent, valPrecent)
+    
+    cycles = 3
+    x_train, y_train = splitDataWithCycles(cycles, trainEngines)
+    x_val, y_val = splitDataWithCycles(cycles, valEngines)
+    x_test, y_test = splitDataWithCycles(cycles, testEngines)
 
-
-    x_train, y_train = splitDataWithCycles(3, trainEngines)
-    x_val, y_val = splitDataWithCycles(3, valEngines)
-    x_test, y_test = splitDataWithCycles(3, testEngines)
-
-    #Scale the data
-    scaler = StandardScaler()
-    x_train = scaler.fit_transform(x_train)
-    x_val = scaler.transform(x_val)
-    x_test = scaler.transform(x_test)
-
+    
     y_train = classify(y_train,classes)
     y_val = classify(y_val,classes)
     y_test = classify(y_test,classes)
     
+    
+    x_train = np.asanyarray(x_train)
+    x_val = np.asanyarray(x_val)
+    x_test = np.asanyarray(x_test)
+    y_train = np.asanyarray(y_train)
+    y_val = np.asanyarray(y_val)
+    y_test = np.asanyarray(y_test)
+    
+    
+    
     return x_train,x_val,x_test,y_train,y_val,y_test
+
+
+if __name__ == "__main__":
+    getData()
