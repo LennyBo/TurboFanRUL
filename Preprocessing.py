@@ -50,7 +50,7 @@ def splitDataWithCycles(nCycles, data):
     split data depending on nCycles
     => nCycles = 3
        it will return the tensors of 3 rows max, for each engine, depending on his life cycle
-       [life_cycle = [0, 1, 2], [life_cycle = [1, 2, 3]], [...]]  
+       [life_cycle = [0, 1, 2], [life_cycle = [1, 2, 3]], [...]]
        
     return two nparrays
     one containing the data arrays
