@@ -23,7 +23,9 @@ Nous avons décidé 3 classes de moteur:
 
 ## Preprocessing
 
-Dans ce chapitre les titre correspondent aux fonctions dans le script Preprocessing.py
+Ce chapitre explique ce qu'il y a dans le fichier Preprocessing.py.
+
+Les titre correspondent aux fonctions de ce script.
 
 ### loadTurboFanData
 
@@ -32,9 +34,9 @@ lecture du fichier
 ### separateData
 
 Une fois le fichier csv lu, nous séparons les données en 3 catégories :
-- Test (70%)
-- Entraînement (20%)
-- Validation (10%)
+- Test (~70%)
+- Entraînement (~20%)
+- Validation (~10%)
 
 ### splitDataWithCycles
 
@@ -75,5 +77,8 @@ Nous allons aussi séparer les catégories en 2 axes :
 ### classify
 
 Une fois les cycles faits, nous classifions les "y", comme précisé dans [classification](#classification)
+
+
+## Neural Network
 
 
