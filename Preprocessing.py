@@ -116,7 +116,7 @@ def getData():
     trainPrecent, testPrecent, valPrecent = 0.7, 0.2, 0.1
     trainEngines, testEngines, valEngines = separateData(df, trainPrecent, testPrecent, valPrecent)
     
-    cycles = 3
+    cycles = 1
     x_train, y_train = splitDataWithCycles(cycles, trainEngines)
     x_val, y_val = splitDataWithCycles(cycles, valEngines)
     x_test, y_test = splitDataWithCycles(cycles, testEngines)
