@@ -116,18 +116,17 @@ Nous utilisons un modèle séquentiel, permettant 1 seul input et output.
 
 Pour les layers, nous utilisons 3 types de layers différents :
 
-- Dense, 
-- LSTM, 
+- LSTM, un layout de réseau de neurones de type Long Short Term Memory, permettant de processer des séquences de données ((source)[https://en.wikipedia.org/wiki/Long_short-term_memory])
 - Dropout, pour éviter des cas d'overfitting
 
-Utilisé dans cet ordre : Dense, LTSM, Dropout, LTSM
+Utilisé dans cet ordre : LTSM, Dropout, LTSM
 
 après des tests, une rolling window a étée mise en place, afin de ne pas uniquement passer l'input "courant" mais aussi un historique.
 
-les scores finaux donnent:
+les scores finaux donnent en moyenne :
 
-`Evaluation loss:  0.6317712068557739 	 Evaluation accuracy: 0.6616306900978088`
-
+- loss: 0.55
+- accuracy: 0.77
 
 ## Dépendances externes
 
@@ -156,8 +155,8 @@ les scores finaux donnent:
 - keras.models (import Sequential)
   on import Sequential afin de pouvoir créer un model de réseau de neurones.
 
-- tqdm (import tqdm)
-  utilisé afin de pouvoir afficher une barre de progression
-
 - sklearn.metrics (import accuracy_score)
   utilisé afin de pouvoir calculer la précision du modèle.
+
+- tqdm (import tqdm)
+  utilisé afin de pouvoir afficher une barre de progression
