@@ -138,6 +138,23 @@ matrice de confusion :
 
 ![confusion matrix](./img/confusion_matrix_neural_network.png)
 
+rappel:
+- Class 0 = Mal
+- Class 1 = Ok
+- Class 2 = Bon
+
+explication de la matrice de confusion :
+
+Lorsque la prédiction annonce que le moteur est :
+- mal, nous avons une précision de 0.953
+- ok, nous avons une précision de 0.723
+- bon, nous avons une précision de 0.767
+
+lorsque le moteur est :
+- mal, la probablilité de le détecter correctement est de 0.718
+- ok, la probablilité de le détecter correctement est de 0.736
+- bon, la probablilité de le détecter correctement est de 0.690
+
 ## Dépendances externes
 
 ### Preprocessing
