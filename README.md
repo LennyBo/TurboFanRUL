@@ -20,15 +20,15 @@ On a pour but de déterminer l'état de vie d'un Turbofan en fonction de ses don
 ## Classification
 
 Nous avons décidé 3 classes de moteur:
-- [0] Bon (x > 150)
-- [1] Ok (50 <= x <= 150>)
-- [2] Mal (x < 50)
+- [0] Mal (x < 50)
+- [1] Ok (50 <= x <= 150)
+- [2] Bon (x > 150)
 
 ## Preprocessing
 
 Ce chapitre explique ce qu'il y a dans le fichier Preprocessing.py.
 
-Les titre correspondent aux fonctions de ce script.
+Les titres correspondent aux fonctions de ce script.
 
 ### loadTurboFanData
 
@@ -36,7 +36,7 @@ lecture du fichier
 
 ### separateData
 
-Une fois le fichier csv lu, nous séparons les données en 3 catégories :
+Une fois le fichier csv lu, nous séparons les moteurs en 3 catégories :
 - Test (~70%)
 - Entraînement (~20%)
 - Validation (~10%)
@@ -67,7 +67,7 @@ Le but est de le séparer de la sorte :
 [[feature_1, feature_, feature_3], [feature_2, feature_3, feature_4], [feature_3, feature_4, feature_5], ...]
 ```
 
-L'idée est d'ensuite pouvoir, depuis feature_1, feature_2 et feature_e3, deviner RUL_3. Pareil depuis feature_2, feature_3 et feature_4, deviner RUL_4, ...
+L'idée est d'ensuite pouvoir, depuis feature_1, feature_2 et feature_3, deviner RUL_3. Pareil depuis feature_2, feature_3 et feature_4, deviner RUL_4, ...
 
 Il est important de ne pas mélanger 2 moteurs, si par exemple un moteur possède 10 données, en procédant de manière "stupide" on se retrouve avec
 
@@ -114,12 +114,18 @@ Pour la partie Neural Network, il faut donc commencer par récupérer les valeur
 
 Nous utilisons un modèle séquentiel, permettant 1 seul input et output.
 
-Pour les layers, nous utilisons 3 types de layers différents :
+Pour les layers, nous utilisons 1 type de layers :
 
-- LSTM, un layout de réseau de neurones de type Long Short Term Memory, permettant de processer des séquences de données ((source)[https://en.wikipedia.org/wiki/Long_short-term_memory])
-- Dropout, pour éviter des cas d'overfitting
+- LSTM, un layout de réseau de neurones de type Long Short Term Memory, permettant de processer des séquences de données [source](https://en.wikipedia.org/wiki/Long_short-term_memory)
 
-Utilisé dans cet ordre : LTSM, Dropout, LTSM
+```python
+model = Sequential()
+
+model.add(layers.LSTM(units=20, return_sequences=True))
+model.add(layers.LSTM(units=3, dropout=0.2, activation='softmax')) # dropout, pour éviter les overfitting
+
+model.compile(optimizer = 'adam', loss = 'sparse_categorical_crossentropy', metrics=['accuracy'])
+```
 
 après des tests, une rolling window a étée mise en place, afin de ne pas uniquement passer l'input "courant" mais aussi un historique.
 
