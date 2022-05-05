@@ -36,3 +36,26 @@ Pour cette raison, la baseline sera de prédire la classe medium a chaque fois.
 Ceci nous donne un baseline a battre d'environ 0.48.
 Il serait possible de faire des classes de même probablilité et on aurait une baseline de 0.33 dans ce cas.
 
+## Choix du classifieur
+
+Pour le choix du classifieur, Lazypredict a été lancé sur le dataset et SVC faissais parti du top 2 niveau précision.
+
+## Selection des hyper paramètres
+
+Pour le choix des hyper hyper paramètres, un grid search sur le paramètre C a été lancé.
+
+Il ce trouve que le grid search ne trouve pas la meilleur solution par rapport au parametre de base.
+
+Pour ce dataset, un C egal a 70.01 est la meilleur solution d'arpès le grid search, et on a une précision de 0.74.
+
+Mais, avec les paramètres de base du SVC, en métant seulement le tolerance for stopping criteria a 1e-5 on a une précision de 0.79 ce qui est notablement mieux.
+
+## Resultats optenus
+
+Le DeepNeuralNetwork cnnlstm a une précision de 0.76 battant la baseline de 0.48. Par contre, le SVC a une précision de 0.79 battant la précision de 0.76 du cnnlstm.
+
+Il est possible qu'une autre disposition de layers serait plus performante que le SVC.
+
+## Conclusion
+
+
