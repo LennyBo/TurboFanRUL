@@ -30,7 +30,7 @@ Pour cette raison, les resultats sont en accuracy et non pas en mean absolute er
 
 ## Choix de la baseline
 
-La classification choisisent ne donne pas des classes de même probabilité. La calsse medium est plus probable que les 2 autres classes.
+La classification choisisent ne donne pas des classes de même probabilité. La classe medium est plus probable que les 2 autres classes.
 Pour cette raison, la baseline sera de prédire la classe medium a chaque fois.
 
 Ceci nous donne un baseline a battre d'environ 0.48.
@@ -52,10 +52,9 @@ Mais, avec les paramètres de base du SVC, en métant seulement le tolerance for
 
 ## Resultats optenus
 
-Le DeepNeuralNetwork cnnlstm a une précision de 0.76 battant la baseline de 0.48. Par contre, le SVC a une précision de 0.79 battant la précision de 0.76 du cnnlstm.
+Le DeepNeuralNetwork lstm a une précision de 0.77 battant la baseline de 0.48. Par contre, le SVC a une précision de 0.79 battant la précision de 0.77 du lstm.
 
-Il est possible qu'une autre disposition de layers serait plus performante que le SVC.
+Il est possible qu'une autre disposition de layers serait plus performante que le SVC mais il faudrait faire plus de tests.
 
 ## Conclusion
-
 
