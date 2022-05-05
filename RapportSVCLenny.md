@@ -99,4 +99,3 @@ Le NN LSTM pourrait être plus optimisé pour faire evt. mieux que le SVC alors 
 
 [NN optimisation]https://towardsdatascience.com/how-to-find-optimal-neural-network-architecture-with-tensorflow-the-easy-way-50575a03d060)
 
-
