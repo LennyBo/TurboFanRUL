@@ -1,5 +1,8 @@
 # TurboFanRUL
 
+- _Lenny Boegli_
+- _Jarod GIrardin_
+
 ## Description
 
 Ce TP à pour but d'implémenter un classificateur en se basant sur deux manières différentes :
@@ -106,6 +109,25 @@ Une fois les cycles faits, nous classifions les "y", comme précisé dans [class
 
 
 ## Neural Network
+
+Pour la partie Neural Network, il faut donc commencer par récupérer les valeurs d'avant (`x_train, x_val, x_test, y_train, y_val, y_test`).
+
+Nous utilisons un modèle séquentiel, permettant 1 seul input et output.
+
+Pour les layers, nous utilisons 3 types de layers différents :
+
+- Dense, 
+- LSTM, 
+- Dropout, pour éviter des cas d'overfitting
+
+Utilisé dans cet ordre : Dense, LTSM, Dropout, LTSM
+
+après des tests, une rolling window a étée mise en place, afin de ne pas uniquement passer l'input "courant" mais aussi un historique.
+
+les scores finaux donnent:
+
+`Evaluation loss:  0.6317712068557739 	 Evaluation accuracy: 0.6616306900978088`
+
 
 ## Dépendances externes
 
