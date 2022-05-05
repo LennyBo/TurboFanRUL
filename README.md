@@ -134,6 +134,10 @@ les scores finaux donnent en moyenne :
 - loss: 0.55
 - accuracy: 0.77
 
+matrice de confusion :
+
+![confusion matrix](./img/confusion_matrix_neural_network.png)
+
 ## Dépendances externes
 
 ### Preprocessing
@@ -153,16 +157,22 @@ les scores finaux donnent en moyenne :
 ### Neural Network
 
 - numpy
-  utilisé pour les tableaux
+  tableaux utilisés par sklearn.
 
 - keras (import layers)
-  on import layers afin de pouvoir créer des couches de neurones.
+  permet de créer des couches de neurones.
 
 - keras.models (import Sequential)
-  on import Sequential afin de pouvoir créer un model de réseau de neurones.
+  permet de créer un model de réseau de neurones.
 
 - sklearn.metrics (import accuracy_score)
-  utilisé afin de pouvoir calculer la précision du modèle.
+  permet de calculer la précision du modèle.
+
+- sklearn_evaluation (import plot)
+  permet de plot une matrice de confusion (avec matplotlib.pyplot).
+
+- matplotlib.pyplot
+  permet d'afficher la matrice de confusion.
 
 - tqdm (import tqdm)
-  utilisé afin de pouvoir afficher une barre de progression
+  permet d'afficher une barre de progression
