@@ -136,7 +136,7 @@ les scores finaux donnent en moyenne :
 
 matrice de confusion :
 
-![confusion matrix](./img/confusion_matrix_neural_network.png)
+![confusion matrix](images/9146511e6f0a1c39d95edc660ca03d7bd1c6defdbcd42b23c58dc822ece31791.png)
 
 rappel:
 - Class 0 = Mal
