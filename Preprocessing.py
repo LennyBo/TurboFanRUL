@@ -50,7 +50,7 @@ def splitDataWithCycles(nCycles, data):
     split data depending on nCycles
     => nCycles = 3
        it will return the tensors of 3 rows max, for each engine, depending on his life cycle
-       [life_cycle = [0, 1, 2], [life_cycle = [1, 2, 3]], [...]]  
+       [life_cycle = [0, 1, 2], [life_cycle = [1, 2, 3]], [...]]
        
     return two nparrays
     one containing the data arrays
@@ -81,6 +81,7 @@ def splitDataWithCycles(nCycles, data):
     for i in range(0, len(features)):
         stopIndex = i+nCycles+1
         # if the unit number is the same for i to max
+        # because we dont want to put two separate engines in the same cycle
         if stopIndex < len(features) and features[i][0] == features[stopIndex][0]:
             x.append(features[i:stopIndex][1::]) # append the reshaped data, after dropping the unit number
             y.append(RUL[stopIndex][0])
@@ -138,6 +139,3 @@ def getData():
     
     return x_train,x_val,x_test,y_train,y_val,y_test
 
-
-if __name__ == "__main__":
-    getData()
